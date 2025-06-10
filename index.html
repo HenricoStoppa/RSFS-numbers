@@ -12,6 +12,125 @@
         />
         <link rel="stylesheet" href="./src/styles/index.css" />
     </head>
-    <body></body>
+    <body>
+        <header>
+            <img src="./src/img/logo.png" alt="Logo NUMBERS" />
+        </header>
+
+        <main id="main-container">
+            <h3 class="main-subtitle">ONLINE - GRATUITO</h3>
+
+            <h1 class="main-title">SORTEADOR DE NÚMEROS</h1>
+
+            <div class="questions">
+                <ul class="question-list">
+                    <li class="question-item">
+                        <div class="question">
+                            <img
+                                src="./src/assets/dialog.svg"
+                                alt="Ícone de pergunta"
+                                class="question-img"
+                            />
+                            <p class="question-text">
+                                Como funciona o sorteador de números?
+                            </p>
+                        </div>
+
+                        <p class="answer">
+                            O sorteador utiliza um algoritmo de geração
+                            aleatória para criar números dentro do intervalo
+                            especificado pelo usuário.
+                        </p>
+                    </li>
+
+                    <li class="question-item">
+                        <div class="question">
+                            <img
+                                src="./src/assets/dialog.svg"
+                                alt="Ícone de pergunta"
+                                class="question-img"
+                            />
+                            <p class="question-text">
+                                Posso escolher o intervalo dos números?
+                            </p>
+                        </div>
+
+                        <p class="answer">
+                            Sim, você pode definir os valores mínimo e máximo
+                            para o intervalo dos números sorteados.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <aside id="aside-container visible">
+            <form action="" class="aside-form">
+                <h2 class="aside-title">QUERO SORTEAR:</h2>
+
+                <p class="form-instruction">
+                    defina o intervalo e a quantidade de números, clique em
+                    "Sortear" e veja os resultados na tela. É rápido e fácil!
+                </p>
+
+                <fieldset>
+                    <div>
+                        <label for="numbers-quantity">NÚMEROS</label>
+                        <input
+                            type="number"
+                            name="numbers-quantity"
+                            id="numbers-quantity"
+                        />
+                    </div>
+                    <div>
+                        <label for="numbers-from">DE</label>
+                        <input
+                            type="number"
+                            name="numbers-from"
+                            id="numbers-from"
+                        />
+                    </div>
+                    <div>
+                        <label for="numbers-to">À</label>
+                        <input
+                            type="number"
+                            name="numbers-to"
+                            id="numbers-to"
+                        />
+                    </div>
+                </fieldset>
+
+                <input
+                    type="checkbox"
+                    name="repeat-number"
+                    id="repeat-number"
+                />
+                <label for="repeat-number">Não repetir número</label>
+
+                <button type="submit">
+                    SORTEAR
+                    <img src="./src/assets/next.svg" alt="Ícone de sorteio" />
+                </button>
+            </form>
+
+            <div class="result visible">
+                <h2 class="result-title">RESULTADO DO SORTEIO</h2>
+                <p class="result-number"><span>1°</span> RESULTADO</p>
+
+                <div class="results">
+                    <span>23</span>
+                    <span>12</span>
+                </div>
+
+                <button class="draw-again-button">
+                    SORTEAR NOVAMENTE
+                    <img
+                        src="./src/assets/repeat.svg"
+                        alt="Ícone Sortear Novamente"
+                    />
+                </button>
+            </div>
+        </aside>
+    </body>
     <script src="./src/scripts/script.js"></script>
 </html>
