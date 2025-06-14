@@ -46,9 +46,9 @@ drawAgain.addEventListener("click", () => {
 
 function generateRandomNumber(quantity, min, max) {
     try {
-        const canGenerateWithoutRepeat = quantity < max;
+        const canGenerateWithoutRepeat = Number(max) >= Number(quantity);
 
-        if (dontRepeatNumbers.checked && canGenerateWithoutRepeat) {
+        if (dontRepeatNumbers.checked && !canGenerateWithoutRepeat) {
             throw new RangeError(
                 `Não é possível gerar ${quantity} sem repetir`
             );
