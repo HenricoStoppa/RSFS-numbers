@@ -1,0 +1,51 @@
+:root {
+    font-size: 62.5%;
+    --font-sora: "Sora", sans-serif;
+    --font-roboto-mono: "Roboto Mono", sans-serif;
+    --font-roboto-flex: "Roboto Flex", sans-serif;
+
+    --display-lg: 800 7.2rem/130% var(--font-sora);
+    --display-md: 800 4rem/130% var(--font-sora);
+    --display-sm: bold 3.2rem/130% var(--font-sora);
+
+    --overline: bold 1.6rem/150% var(--font-roboto-mono);
+
+    --paragraph-lg: 500 1.6rem/150% var(--font-roboto-flex);
+    --paragraph-md: 500 1.4rem/150% var(--font-roboto-flex);
+    --paragraph-sm: 500 1.2rem/150% var(--font-roboto-flex);
+    --label-md: bold 2rem/150% var(--font-roboto-flex);
+    --label-sm: bold 1.6rem/150% var(--font-roboto-flex);
+
+    --content-primary: #ffffff;
+    --content-secondary: #c7c9cc;
+    --content-tertiary: #d9d9d9;
+    --content-brand: #c58de7;
+    --content-inverse: #030203;
+
+    --background-primary: #020202;
+    --background-secondary: #111012;
+    --background-tertiary: #24222e;
+    --background-brand: #c58de7;
+    --background-gray: #3d3d3d;
+
+    --accent-pink: #d586e0;
+    --accent-blue: #e9a9b3;
+    --accent-green: #77c0af;
+    --accent-lime: #d1dc97;
+    --accent-red: #e9a9b3;
+
+    --gradient-border: linear-gradient(
+        to right,
+        #77c0af 0%,
+        #d1dc97 14.84%,
+        #e9a9b3 32.15%,
+        #d586e0 65.79%,
+        #91a1fa 84.58%
+    );
+    --gradient-background: linear-gradient(
+        to right,
+        #d586e0 0%,
+        #91a1fa 98.93%
+    );
+    --gradient-content: linear-gradient(to right, #c7c9cc 0%, #3d3d3d 100%);
+}
