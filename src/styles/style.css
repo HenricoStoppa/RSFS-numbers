@@ -1,0 +1,238 @@
+/* ROOT */
+@import url("./root.css");
+
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-primary);
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* BACKGROUND */
+.background {
+    background: linear-gradient(var(--background-primary) 0%, transparent 100%);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+
+    height: 100%;
+    width: 100%;
+
+    padding: 7.6rem 12rem;
+}
+
+/* MAIN */
+#main-container {
+    width: 60.8rem;
+}
+
+header {
+    margin-bottom: 7.6rem;
+}
+
+.main-subtitle {
+    background: var(--gradient-content);
+    -webkit-background-clip: text;
+
+    font: var(--overline);
+    color: transparent;
+
+    margin-bottom: 1.2rem;
+}
+
+.main-title {
+    font: var(--display-lg);
+    color: var(--content-primary);
+
+    margin-bottom: 3.8rem;
+}
+
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.6rem;
+}
+
+.question-text {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+
+    font: var(--paragraph-md);
+    color: var(--content-brand);
+}
+
+.question-text::before {
+    content: url("../assets/dialog.svg");
+}
+
+.answer {
+    font: var(--paragraph-sm);
+    color: var(--content-secondary);
+
+    width: 38.6rem;
+}
+
+/* ASIDE */
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form.visible {
+    display: block;
+}
+
+form.invisible {
+    display: none;
+}
+
+.form-title,
+.result-title {
+    font: var(--label-md);
+    color: var(--content-primary);
+}
+
+.form-instruction,
+.result-number {
+    font: var(--paragraph-lg);
+    color: var(--content-secondary);
+}
+
+.form-instruction {
+    margin-bottom: 4rem;
+}
+
+fieldset {
+    display: flex;
+    gap: 1.2rem;
+
+    width: 48.2rem;
+
+    border: none;
+}
+
+.number-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 2rem;
+}
+
+fieldset label {
+    font: var(--label-md);
+    color: var(--content-secondary);
+
+    margin-bottom: 0.2rem;
+}
+
+fieldset input {
+    background-color: var(--background-secondary);
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    font: var(--display-sm);
+    color: var(--content-primary);
+
+    height: 5.6rem;
+    width: 10rem;
+
+    border: none;
+    border-radius: 0.8rem;
+
+    outline: none;
+}
+
+fieldset input:hover {
+    border: 2px solid transparent;
+    border-image: var(--gradient-border);
+    border-image-slice: 1;
+}
+
+fieldset input:active {
+    border: 3px solid transparent;
+    border-image: var(--gradient-border);
+    border-image-slice: 1;
+}
+
+fieldset label:hover {
+    color: var(--content-brand);
+}
+
+.repeat {
+    margin-bottom: 4rem;
+}
+
+.repeat label {
+    font: var(--label-sm);
+    font-weight: 100;
+    color: var(--content-primary);
+}
+
+.submit-button,
+.draw-again-button {
+    background-color: var(--background-tertiary);
+
+    font: var(--label-md);
+    color: var(--content-primary);
+
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 1.3rem;
+
+    border: none;
+    border-radius: 0.8rem;
+
+    cursor: pointer;
+}
+
+.result {
+    width: 100%;
+}
+
+.result.visible {
+    display: block;
+}
+
+.result.invisible {
+    display: none;
+}
+
+.result .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.result-item {
+    font: var(--display-md);
+    color: var(--content-brand);
+
+    margin: 6rem 0;
+}
