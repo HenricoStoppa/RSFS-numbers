@@ -104,6 +104,6 @@ function showResults(result) {
     } catch (error) {
         console.log(error);
 
-        alert("Algo deu errado, tente novamente mais tarde!");
+        alert("Algo deu errado, tente novamente.");
     }
 }
