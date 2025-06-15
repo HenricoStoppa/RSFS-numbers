@@ -95,11 +95,15 @@ function showResults(result) {
         resultsDiv.innerHTML = "";
 
         result.forEach((element) => {
+            const resultContainer = document.createElement("div");
+            resultContainer.classList.add("result-container");
+
             const resultSpan = document.createElement("span");
             resultSpan.classList.add("result-item");
             resultSpan.innerText = element;
 
-            resultsDiv.appendChild(resultSpan);
+            resultContainer.appendChild(resultSpan);
+            resultsDiv.appendChild(resultContainer);
         });
     } catch (error) {
         console.log(error);

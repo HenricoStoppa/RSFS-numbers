@@ -139,34 +139,41 @@ fieldset label {
 }
 
 fieldset input {
-    background-color: var(--background-secondary);
+    background: var(--background-secondary);
+    background-clip: padding-box;
 
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    font: var(--display-sm);
+    font: var();
     color: var(--content-primary);
 
-    height: 5.6rem;
     width: 10rem;
+    height: 5.6rem;
 
-    border: none;
-    border-radius: 0.8rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    transition: 500ms;
+}
+
+fieldset input:hover,
+fieldset input:focus {
+    background-image: linear-gradient(
+            var(--background-tertiary),
+            var(--background-tertiary)
+        ),
+        var(--gradient-border);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    border: 2px solid transparent;
 
     outline: none;
 }
 
-fieldset input:hover {
-    border: 2px solid transparent;
-    border-image: var(--gradient-border);
-    border-image-slice: 1;
-}
-
-fieldset input:active {
-    border: 3px solid transparent;
-    border-image: var(--gradient-border);
-    border-image-slice: 1;
+fieldset input:hover + .label,
+fieldset input:focus + .label {
+    color: transparent;
 }
 
 fieldset label:hover {
@@ -174,13 +181,65 @@ fieldset label:hover {
 }
 
 .repeat {
+    display: flex;
+    align-items: center;
+
     margin-bottom: 4rem;
 }
 
-.repeat label {
+.repeat span {
     font: var(--label-sm);
     font-weight: 100;
     color: var(--content-primary);
+
+    margin-left: 1rem;
+}
+
+#repeat-number {
+    display: none;
+}
+
+.switch {
+    background-color: var(--background-gray);
+
+    display: flex;
+    align-items: center;
+
+    height: 3rem;
+    width: 5rem;
+
+    padding: 0.3rem;
+
+    border-radius: 4rem;
+
+    cursor: pointer;
+
+    transition: all 500ms ease-in-out;
+
+    position: relative;
+}
+
+.switch .slider {
+    background-color: var(--content-primary);
+
+    height: 2.5rem;
+    width: 2.5rem;
+
+    margin: 0;
+
+    border-radius: 50%;
+
+    transition: all 250ms ease-in-out;
+
+    position: absolute;
+}
+
+#repeat-number:checked ~ .switch {
+    background-color: var(--content-brand);
+}
+
+#repeat-number:checked ~ .switch .slider {
+    transform: translateX(1.9rem);
 }
 
 .submit-button,
@@ -190,19 +249,74 @@ fieldset label:hover {
     font: var(--label-md);
     color: var(--content-primary);
 
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
+    display: inline-flex;
     justify-content: center;
+    align-items: center;
+    gap: 8px;
 
     width: 100%;
 
-    padding: 1.3rem;
+    padding: 12px 32px;
 
     border: none;
-    border-radius: 0.8rem;
+    border-radius: 8px;
 
     cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    position: relative;
+}
+
+.submit-button::after,
+.draw-again-button::after {
+    background: var(--gradient-border);
+
+    content: "";
+
+    border-radius: 10px;
+
+    z-index: -1;
+    opacity: 0;
+
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+
+    transition: opacity 0.3s ease;
+}
+
+.submit-button:hover::after,
+.draw-again-button:hover::after {
+    opacity: 1;
+}
+
+.submit-button:hover,
+.draw-again-button:hover {
+    background-color: var(--background-secondary);
+    border: none;
+}
+
+.submit-button:hover img {
+    animation: fowardAndBackward 500ms alternate 2 both;
+}
+
+@keyframes fowardAndBackward {
+    100% {
+        transform: translateX(1rem);
+    }
+}
+
+.draw-again-button:hover img {
+    animation: rotateIcon 500ms ease-out;
+}
+
+@keyframes rotateIcon {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .result {
@@ -230,9 +344,55 @@ fieldset label:hover {
     gap: 2rem;
 }
 
-.result-item {
+.result-container {
+    background-color: var(--background-brand);
+
     font: var(--display-md);
-    color: var(--content-brand);
+    color: var(--content-inverse);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 7rem;
+    width: 7rem;
 
     margin: 6rem 0;
+
+    border-radius: 2rem;
+
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: showResult 3s forwards;
+}
+
+@keyframes showResult {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    90% {
+        background-color: var(--background-brand);
+
+        color: var(--content-inverse);
+    }
+
+    100% {
+        background-color: transparent;
+
+        color: var(--content-brand);
+
+        transform: rotate(720deg);
+    }
+}
+
+.result-item {
+    opacity: 0;
+
+    animation: resultAppear 3s 1s forwards;
+}
+
+@keyframes resultAppear {
+    100% {
+        opacity: 1;
+    }
 }
