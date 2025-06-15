@@ -1,4 +1,5 @@
 // Get form elements
+const formContainer = document.querySelector(".aside-form");
 const form = document.querySelector("form");
 const quantityToDraw = document.getElementById("numbers-quantity");
 const startNumber = document.getElementById("numbers-from");
@@ -6,9 +7,12 @@ const finalNumber = document.getElementById("numbers-to");
 const dontRepeatNumbers = document.getElementById("repeat-number");
 
 // Get result elements
+const resultContainer = document.querySelector("div.result");
 const resultsDiv = document.querySelector("div.results");
 const drawAgain = document.querySelector("button.draw-again-button");
 const resultsQuantity = document.querySelector("p.result-number span");
+
+let drawQuantity = 1;
 
 quantityToDraw.oninput = () => {
     quantityToDraw.value = quantityToDraw.value.replace(/\D/g, "");
@@ -25,23 +29,25 @@ finalNumber.oninput = () => {
 form.onsubmit = (event) => {
     event.preventDefault();
 
-    showResults(
-        generateRandomNumber(
-            quantityToDraw.value,
-            startNumber.value,
-            finalNumber.value
-        )
+    generateRandomNumber(
+        quantityToDraw.value,
+        startNumber.value,
+        finalNumber.value
     );
+
+    drawQuantity = 1;
+    resultsQuantity.innerText = `${Number(drawQuantity)}°`;
 };
 
 drawAgain.addEventListener("click", () => {
-    showResults(
-        generateRandomNumber(
-            quantityToDraw.value,
-            startNumber.value,
-            finalNumber.value
-        )
+    generateRandomNumber(
+        quantityToDraw.value,
+        startNumber.value,
+        finalNumber.value
     );
+
+    drawQuantity++;
+    resultsQuantity.innerText = `${Number(drawQuantity)}°`;
 });
 
 function generateRandomNumber(quantity, min, max) {
@@ -57,6 +63,8 @@ function generateRandomNumber(quantity, min, max) {
                 "Número mínimo não pode ser maior ou igual ao número máximo"
             );
         }
+
+        resultsDiv.innerHTML = "";
 
         let generatedNumbers = [];
 
@@ -75,10 +83,10 @@ function generateRandomNumber(quantity, min, max) {
                 }
             }
 
+            showResults(randomNumber);
+
             generatedNumbers.push(randomNumber);
         }
-
-        return generatedNumbers;
     } catch (error) {
         console.log(error);
 
@@ -92,19 +100,21 @@ function generateRandomNumber(quantity, min, max) {
 
 function showResults(result) {
     try {
-        resultsDiv.innerHTML = "";
+        const resultItemContainer = document.createElement("div");
+        resultItemContainer.classList.add("result-container");
 
-        result.forEach((element) => {
-            const resultContainer = document.createElement("div");
-            resultContainer.classList.add("result-container");
+        const resultSpan = document.createElement("span");
+        resultSpan.classList.add("result-item");
+        resultSpan.innerText = result;
 
-            const resultSpan = document.createElement("span");
-            resultSpan.classList.add("result-item");
-            resultSpan.innerText = element;
+        resultItemContainer.appendChild(resultSpan);
+        resultsDiv.appendChild(resultItemContainer);
 
-            resultContainer.appendChild(resultSpan);
-            resultsDiv.appendChild(resultContainer);
-        });
+        formContainer.classList.remove("visible");
+        formContainer.classList.add("invisible");
+
+        resultContainer.classList.remove("invisible");
+        resultContainer.classList.add("visible");
     } catch (error) {
         console.log(error);
 
